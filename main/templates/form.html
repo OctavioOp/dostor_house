@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{% block titulo %}INDEX USUARIO{% endblock %}
+
+<h1>Bienvenid@: {{request.session.user.name}}</h1>
+
+{% block contenido %}
+<div class="container">
+    <section>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p>Date</p>
+            <input type="date" name='date' min="2021-09-09" required>
+            <p>Time</p>
+            <input type="time" min="08:00" max="17:00" name="time" required>
+            <p>Complain</p>
+            <textarea name="complain" id="" cols="30" rows="10" required></textarea>
+            <div class="row">
+                <div class="col-4">
+                    <button type="submit" class="btn btn-success">Add Appointment</button>
+                    <a href="/" class="btn btn-secondary">Cancel</a>
+                </div>
+                <div class="col"></div>
+            </div>
+           
+        </form>
+    </section>
+</div>
+{% endblock %}

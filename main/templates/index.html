@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block titulo %}INDEX USUARIO{% endblock %}
+
+{% block contenido %}
+<h1>Bienvenid@: {{request.session.user.name}}</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Patiente name</th>
+      <th scope="col">complain</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  {% for app in all_appointments %}
+  <tbody>
+    
+
+      <tr>
+        <td>{{app.date}}</td>
+        <td>{{app.time}}</td>
+        <td>{{app.patient_name.name}}</td>
+        <td>{{app.complain}}</td>
+        <td>
+          <a href="delete_appointment/{{app.id}}"><i class="far fa-trash-alt"></i></a>
+        </td>
+      </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+<div class="my-3">
+  <a href="/new_appointment" class="btn btn-primary">Add a new appointment</a>
+</div>
+{% endblock %}
+
+{% block libreria %}
+{% endblock %}
